@@ -26,11 +26,11 @@ static struct {
 static char digits[] = "0123456789abcdef";
 
 static void
-printint(int xx, int base, int sign)
+printint(long xx, int base, int sign)
 {
-  char buf[16];
+  char buf[19];
   int i;
-  uint x;
+  long x;
 
   if(sign && (sign = xx < 0))
     x = -xx;
@@ -38,8 +38,9 @@ printint(int xx, int base, int sign)
     x = xx;
 
   i = 0;
+
   do {
-    buf[i++] = digits[x % base];
+    buf[i++] = digits[x % base]; // Convert int to char, place in buffer
   } while((x /= base) != 0);
 
   if(sign)
@@ -92,6 +93,9 @@ printf(char *fmt, ...)
       break;
     case 'o':
       printint(va_arg(ap, int), 8, 1);
+      break;
+    case 'l':
+      printint(va_arg(ap, long), 10, 1);
       break;
     case 'p':
       printptr(va_arg(ap, uint64));

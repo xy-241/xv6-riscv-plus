@@ -15,7 +15,24 @@ main()
     printfinit();
     printf("\n");
     printf("xv6 kernel is booting\n");
-    printf("Make sure printf working - dec: %d, hex: %x, name: %s, oct: %o", 10, 10, "xy241", 10);
+    printf("\n");
+
+    // System Info
+    printf("System Info: \n");
+    printf("int takes %d bytes\n", sizeof(int));
+    printf("long takes %d bytes\n", sizeof(long));
+    printf("\n");
+
+    // Feature Testing
+    printf("Feature Testing: \n");
+    printf("dec:%d, hex:%x, str:%s, oct:%o, long: %l, stretch: %l \n", 10, 10, "10", 10, 2147483650, -9223372036854775807);
+    printf("\n");
+
+    // Playground
+    printf("Playground: \n");
+    printf("sign? %d, unsigned? %d, actual: %d, actualB: %d", 32768, 65536, 2147483647, 2147483648);
+    printf("\n");
+
     printf("\n");
     kinit();         // physical page allocator
     kvminit();       // create kernel page table
